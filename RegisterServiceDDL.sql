@@ -21,6 +21,8 @@ INSERT INTO product VALUES (
        uuid_generate_v4()
      , 'lookupcode1'
      , 100
+     , 0.01
+     , FALSE
      , current_timestamp
 );
 
@@ -28,6 +30,8 @@ INSERT INTO product VALUES (
        uuid_generate_v4()
      , 'lookupcode1'
      , 125
+     , 10.50
+     , FALSE
      , current_timestamp
 );
 
@@ -35,6 +39,8 @@ INSERT INTO product VALUES (
        uuid_generate_v4()
      , 'lookupcode3'
      , 150
+     , 19.64
+     , FALSE
      , current_timestamp
 );
 
@@ -44,7 +50,7 @@ CREATE TABLE employee (
   firstname character varying(128) NOT NULL DEFAULT(''),
   lastname character varying(128) NOT NULL DEFAULT(''),
   password character varying(512) NOT NULL DEFAULT(''),
-  active boolean NOT NULL DEFAULT(FALSE), 
+  active boolean NOT NULL DEFAULT(FALSE),
   classification int NOT NULL DEFAULT(0),
   managerid uuid NOT NULL,
   createdon timestamp without time zone NOT NULL DEFAULT now(),
@@ -69,7 +75,7 @@ CREATE TABLE transaction (
 ) WITH (
   OIDS=FALSE
 );
-  
+
 CREATE INDEX ix_transaction_recordID
   ON transaction
   USING hash(recordID);
