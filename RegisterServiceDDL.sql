@@ -68,7 +68,7 @@ CREATE TABLE transaction (
   recordID uuid NOT NULL,
   cashierID int NOT NULL,
   totalAmount int NOT NULL,
-  transactionType boolean NOT NULL DEFAULT(TRUE), /*TRUE => Sale, FALSE => Return*/
+  transactionType int NOT NULL, /*0 => Sale, 1 => Return*/
   referenceID uuid, /*if it's a Sale, then referenceID is NULL; otherwise it's the original Sale uuid*/
   createdon timestamp without time zone NOT NULL DEFAULT now(),
   CONSTRAINT transaction_key PRIMARY KEY (recordID)
