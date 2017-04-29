@@ -44,6 +44,24 @@ INSERT INTO product VALUES (
      , current_timestamp
 );
 
+INSERT INTO product VALUES (
+       uuid_generate_v4()
+     , 'lookupcode4'
+     , 120
+     , 10.00
+     , TRUE
+     , current_timestamp
+);
+
+INSERT INTO product VALUES (
+       uuid_generate_v4()
+     , 'lookupcode5'
+     , 130
+     , 21.50
+     , TRUE
+     , current_timestamp
+);
+
 CREATE TABLE employee (
   id uuid NOT NULL,
   employeeid character varying(32) NOT NULL DEFAULT(''),
