@@ -86,6 +86,7 @@ CREATE TABLE transaction (
   recordID uuid NOT NULL,
   cashierID int NOT NULL,
   totalQuantity int NOT NULL,
+  totalPrice numeric(9, 2) NOT NULL,
   transactionType int NOT NULL, /*0 => Sale, 1 => Return*/
   referenceID uuid, /*if it's a Sale, then referenceID is NULL; otherwise it's the original Sale uuid*/
   createdon timestamp without time zone NOT NULL DEFAULT now(),
