@@ -85,7 +85,7 @@ CREATE INDEX ix_employee_employeeid
 CREATE TABLE transaction (
   recordID uuid NOT NULL,
   cashierID int NOT NULL,
-  totalAmount int NOT NULL,
+  totalQuantity int NOT NULL,
   transactionType int NOT NULL, /*0 => Sale, 1 => Return*/
   referenceID uuid, /*if it's a Sale, then referenceID is NULL; otherwise it's the original Sale uuid*/
   createdon timestamp without time zone NOT NULL DEFAULT now(),
@@ -102,9 +102,9 @@ CREATE INDEX ix_transaction_recordID
 CREATE TABLE transactionEntry (
   entryID uuid NOT NULL,
   fromTransaction uuid NOT NULL,
-  PLU character varying(32) NOT NULL,
-  amount int NOT NULL DEFAULT(0),
-  soldAt numeric(7, 2) NOT NULL DEFAULT(0),
+  lookupcode character varying(32) NOT NULL,
+  quantity int NOT NULL DEFAULT(0),
+  price numeric(7, 2) NOT NULL DEFAULT(0),
   PRIMARY KEY (entryID),
   FOREIGN KEY (fromTransaction) REFERENCES transaction (recordID)
 ) WITH (
